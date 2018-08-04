@@ -4,7 +4,7 @@
 
 module.exports = {
   home: {
-    build: ({}) => ({
+    build: () => ({
       url: 'http://app.mi.com/',
       headers: {
         Host: 'app.mi.com',
@@ -21,7 +21,7 @@ module.exports = {
       let l = [];
       $('.category-list li').each((i, e) => {
         l.push({
-          page: 0,
+          pageNum: 0,
           category: $(e)
             .find('a')
             .text(),
@@ -41,10 +41,10 @@ module.exports = {
   },
 
   getItems: {
-    build: ({ page, categoryId }) => ({
+    build: ({ pageNum, categoryId, category }) => ({
       url: 'http://app.mi.com/categotyAllListApi',
       qs: {
-        page,
+        pageNum,
         categoryId,
         pageSize: '30',
       },
@@ -60,6 +60,17 @@ module.exports = {
         'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
       },
     }),
-    parse: ({ body }) => body,
+    parse: ({ body, category }) => {
+      let l = [];
+      body.data.forEach(e => {
+        l.push({
+          origin: '小米应用',
+          name: e.displayName,
+          category,
+          lastModified: new Date(),
+        });
+      });
+      return l;
+    },
   },
 };
