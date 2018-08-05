@@ -1,7 +1,7 @@
 /**
  * Created by Cooper on 2018/8/4.
  */
-const sleep = require('../../lib/sleep');
+const sleep  = require('../../lib/sleep');
 
 let flow0 = {
   seed: true,
