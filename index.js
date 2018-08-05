@@ -6,8 +6,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const querystring = require('querystring');
 const { EventEmitter } = require('events');
-const queue = require('./queue');
-const request = require('./request');
+const queue = require('./lib/queue');
+const request = require('./lib/request');
 
 mongoose.connect(
   process.env.MONGO || 'mongodb://127.0.0.1:27017/anax',
