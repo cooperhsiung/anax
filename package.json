@@ -1,6 +1,6 @@
 {
   "name": "anax",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "spider framework",
   "main": "index.js",
   "scripts": {
